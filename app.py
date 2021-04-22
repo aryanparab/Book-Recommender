@@ -7,7 +7,6 @@ app = Flask(__name__)
 
 vectorizer = pickle.load(open('vectorizer.pickle','rb'))
 data = pd.read_csv('book_data_rating_pages.csv')
-true_data = pd.read_csv('book_data.csv')
 
 ncorpus = vectorizer.transform(data['clean_data'].tolist())
 similarity = cosine_similarity(ncorpus)
@@ -23,7 +22,7 @@ def get_recom_cosin(title,func=similarity):
   scores = sorted(values,key = lambda x : x[1],reverse=True)
   scores = scores[1:30]
   idxs = [i[0] for i in scores]
-  return  true_data.iloc[idxs]
+  return  data.iloc[idxs]
 
 @app.route("/",methods=['POST','Get'])
 def home():
