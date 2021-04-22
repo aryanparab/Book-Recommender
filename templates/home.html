@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Book Recommender</title>
+</head>
+<body>
+<form method="Post">
+	<label>Enter Name of book you are currently reading</label>
+	<input type="text" id='title' name = 'title' placeholder="The Stand" required>
+	<input type="submit" value="Get Recommendation" /> 
+</form>
+	{% if ans !="no" %}
+	<h2>Recommendations For you to Read </h2>
+
+	{% for i in range(15) %}
+<ul>	
+<li>
+	<p>Book Name : {{ans[1][i]}}</p>
+	<p>No of Pages : {{ans[2][i]}}</p>
+	<p>Book Author: {{ans[4][i]}}</p>
+	<p>Book Description : {{ans[3][i]}}</p>
+</li>
+</ul>
+	{%endfor%}
+
+	{%endif%}
+</body>
+</html>
